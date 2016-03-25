@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Ajax Comet Demo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script>
+var timestamp = 0, url = 'push.class.php', error = false;
+function connect() {
+	$.ajax({
+		success : function(response) {
+			var data = eval('('+response+')');
+			error = false;
+			timestamp = data.timestamp;
+			$("#content").append('<div>' + data.msg +'</div>');
+		},
+		error : function() {
+			error = true;
+			setTimeout(function(){ connect();}, 5000);
+		},
+		complete : function() {
+			if (error)
+				// if a connection problem occurs, try to reconnect each 5 seconds
+				setTimeout(function(){connect();}, 5000);
+			else
+				connect();
+		},
+		url : url,
+		type : 'get',
+		timeout : 0,
+		data : {'timestamp' : timestamp}
+	});
+}
+
+function send(msg) {
+	$.ajax({
+		data : {'msg' : msg}, type : 'get', url : url
+	});
+}
+
+function getLocalTime(nS) {
+	return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
+}
+
+$(document).ready(function() {
+	connect();
+});
+</script>
+</head>
+
+<body>
+
+<div id="content"></div>
+<p>
+<form action="" method="get" onsubmit="send($('#word').val());$('#word').val('');return false;">
+  <input type="text" name="word" id="word" value="" />
+  <input type="submit" name="submit" value="Send" />
+</form>
+</p>
+
+</body>
+
+</html>

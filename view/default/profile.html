@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绿豆网|来绿豆一起拼车，拼玩，拼房，拼购</title>
+<link href="__ROOT__/static/css/xtyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/static/js/jquery-1.6.2.min.js"></script>
+</head>
+<body class="bg">
+<include file='Public:header' />
+<div id="body" class="ah">
+	<div class="w9">
+<div class="boxuser1 ah">
+<include file='Public:memu' />
+<script>
+	$(".side-nav li").eq(7).addClass('current J_GoToLogin');
+</script>
+	<div class="userzxright">
+		<div class="title">个人基本资料
+			<span class='tab3'>
+				<a href="{:U('Spacecp/set_avatar')}">设置头像</a>
+				<a style="color:white; background:green; border:solid green 1px;" href="{:U('Spacecp/profile')}">用户档案</a>
+			</span>
+		</div>
+			<form class='fms' action='__URL__/profile' method='post' enctype='multipart/form-data' onsubmit='return checkUserinfo(this)' name='myform'>
+				<p><span>用户昵称：</span><input type='text' name='nick_name' id='nick_name' value="{$userinfo['nick_name']}" /></p>
+				<p><span>真实姓名：</span><input type='text' name='real_name' id='real_name' value="{$userinfo['real_name']}" /> (当你修改真实姓名后, 电话是必填项)</p>
+				<p><span>用户性别：</span> 保密 <input type='radio' name='sex' id='sex' value='0' <if condition="$userinfo['sex'] eq 0">checked</if> />
+						   &nbsp;&nbsp;男 <input type='radio' name='sex' id='sex' value='1' <if condition="$userinfo['sex'] eq 1">checked</if> />
+						   &nbsp;&nbsp;女 <input type='radio' name='sex' id='sex' value='2' <if condition="$userinfo['sex'] eq 2">checked</if> /></p>
+				<p><span>是否单身：</span> 保密 <input type='radio' name='is_single' id='is_single' value='0' <if condition="$userinfo['is_single'] eq 0">checked</if> />
+						   &nbsp;&nbsp;是 <input type='radio' name='is_single' id='is_single' value='1' <if condition="$userinfo['is_single'] eq 1">checked</if> />
+						   &nbsp;&nbsp;否 <input type='radio' name='is_single' id='is_single' value='2' <if condition="$userinfo['is_single'] eq 2">checked</if> /></p>
+				<p><span>用户Q Q：</span><input type='text' name='qq' id='qq' value="{$userinfo['qq']}" /></p>
+				<p><span>用户电话：</span><input type='text' name='tellphone' id='tellphone' value="{$userinfo['tellphone']}" /> (支持：座机(可加区号也可不加)、手机)</p>
+				<p><span>用户简介：</span><textarea name='intro'>{$userinfo['intro']}</textarea></p>
+				<p><span>&nbsp;</span><input type='submit' name='submit' value='提交' class="bt1" /></p>
+			</form>
+	</div>
+
+	</div>
+	</div>
+	</div>
+</div>
+<include file='Public:footer' />
+</body>
+</html>
+<script language='javascript'>
+function checkUserinfo(frm) {
+	var msg = '';
+	if ((frm.elements['real_name'].value).match(/^c:\\con\\con$|[\'\*\"\<\>\&\\]/)) {
+		msg += '你输入姓名含有非法字符' + "\n";
+	} else if (frm.elements['real_name'].value != "{$userinfo['real_name']}" && 
+		!(/^(0\d{3,4}\-)?\d{7,8}/.test(frm.elements['tellphone'].value)) &&
+		!(/^1[3|5|8]\d{9}$/.test(frm.elements['tellphone'].value)))
+	{
+		msg += '你输入的电话号码非法' + "\n";
+	}
+	
+	if ($.trim(frm.elements['nick_name'].value).length == 0) {
+		msg += '用户的昵称是必填项' + '\n';
+	} else if ((frm.elements['nick_name'].value).match(/^c:\\con\\con$|[\'\*\"\<\>\&\\]/)) {
+		msg += '你输入昵称含有非法字符' + "\n";
+	}
+	
+	if (frm.elements['qq'].value.length > 0 && 
+		!(/^\d{5,11}$/.test(frm.elements['qq'].value)))
+	{
+		msg += '你输入的qq必须在5-11位之间' + "\n";
+	}
+	
+	if (/^c:\\con\\con$|[\'\*\"\<\>\&\\]/.exec(frm.elements['intro'].value)) {
+		msg += '你输入的简介含有非法字符' + "\n";
+	}
+	
+	if (msg.length > 0) {
+		alert(msg);
+		return false;
+	} else {
+		return true;
+	}
+}
+</script>

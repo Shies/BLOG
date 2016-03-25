@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绿豆网|来绿豆一起拼车，拼玩，拼房，拼购</title>
+<link href="__ROOT__/static/css/xtyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/static/js/jquery-1.6.2.min.js"></script>
+</head>
+<body class="bg">
+<include file='Public:header' />
+<div id="body" class="ah">
+	<div class="w9">
+<div class="boxuser1 ah">
+<include file='Public:memu' />
+<script>
+	$(".side-nav li").eq(6).addClass('current J_GoToLogin');
+</script>
+	<div class="userzxright">
+		<div class="title">账户基本信息</div>
+		<div>
+			<form action='__URL__' method='post' class='fms' name='myform'>
+				<p><span>信用认证：</span><label id="rez">{$userinfo['user_rank'] == 0 ? '普通' : '等级会员'}</label></p>
+				<p><span>绿豆：</span><label class="reds">{$userinfo['lvdoor']} 个<a style='display:none;' href='javascript:;' class="bt3">立即充值</a></p>
+				<!-- 
+				<p><span>账号金额：</span>￥<label class="reds">{$userinfo['user_money']} 元</label> <a style='display:none;' href='javascript:;' class="bt3">立即充值</a></p>
+				<p><span>冻结金额：</span>￥<label class="reds">{$userinfo['frozen_money']} 元</label> </p>
+				<p><span>保释金：</span>￥<label class="reds">{$userinfo['bail_money']} 元</label> </p>
+				-->
+				<p><span>付款成长值：</span><label class="reds">{$userinfo['pay_points']}</label> 点</p>
+				<p><span>等级成长值：</span><label class="reds">{$userinfo['rank_points']}</label> 点 (距 <b>LV{$userinfo['space_rank']}</b> 还差 <b>{$userinfo['distance']}</b> 点) </p>
+				<p><span>注册时间：</span>{$userinfo['reg_time']|date='Y-m-d H:i:s',###}</p>
+				<p><span>最后访问时间：</span>{$userinfo['last_time']}</p>
+				<p><span>最后登录时间：</span>{$userinfo['last_login']|date='Y-m-d H:i:s',###}</p>
+				<p><span>最后登录IP：</span>{$userinfo['last_ip']}</p>
+				<p><span>访问统计：</span>{$userinfo['visit_count']} 次</p>
+				<p><span>剩余拼车次数：</span>{$userinfo['car_sharing']} 次 <font color='red'>(每月1号自动恢复60次)</font></p>
+				<p><span>剩余拼房次数：</span>{$userinfo['house_sharing']} 次 <font color='red'>(每月1号自动恢复20次)</font></p>
+				<p><span>剩余拼玩次数：</span>{$userinfo['play_sharing']} 次 <font color='red'>(每月1号自动恢复60次)</font></p>
+				<p><span>用户等级：</span><label id="vip">LV{$userinfo['user_rank']}</label></p>
+			</form>
+		</div>
+		<div class="cr"></div>
+	</div>
+
+	</div>
+	</div>
+	</div>
+</div>
+<include file='Public:footer' />
+</body>
+</html>
+<script language='javascript'>
+function load_selected_tab() {
+	var r = document.getElementsByName('show_cat_child');
+	var j = r.length, name = 'tab';
+	for (i = 0; i < r.length; i ++) {
+		if (r[i].checked) {
+			showtab(name, r[i].value, j);
+			break;
+		}
+	}
+}
+
+function showtab(name, t, j) {
+	for (i = 1; i <= j; i ++) {
+		var es = document.getElementById(name + i);
+		var rs = document.getElementById('r_' + name + i);
+		es.style.display = i == t ? 'block' : 'none';
+		rs.checked = i == t ? 'checked' : '';
+	}
+}
+</script>

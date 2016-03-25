@@ -1,0 +1,115 @@
+/* Basic style */
+*{margin:0px;padding:0px;}
+html,body{text-align:center;margin:0 auto;font-size:12px;color:#727272;background:#232324;}
+ul,li{list-style:none;}
+h1,h2,h3,h4{font-size:12px;font-weight:normal;}
+a img{border:0;}
+/* font color */
+a{text-decoration:none;color:#787878;text-decoration:none;text-align:left;}
+a:hover{text-decoration:underline;color:#787878;}
+/* general */
+
+.clear{
+	clear:both;
+	line-height:0px;
+	font-size:1px;
+	height:0px;
+	overflow:hidden;
+}
+.fl_le{float:left!important;}
+.fl_ri{float:right!important;}
+.pad_top0{padding-top:0!important;}
+.pad_top18{padding-top:18px!important;}
+.pad_le{padding-left:0!important;}
+.pad_ri{padding-right:0!important;}
+.mar10{margin:30px 0!important;}
+.pad_le0{padding-left:0!important;}
+.mar_top0{margin-top:0px!important;}
+.mar_top4{margin-top:4px!important;}
+.mar_top8{margin-top:8px!important;}
+.mar_top15{margin-top:15px!important;}
+.mar_top18{margin-top:18px!important;}
+.mar_top18ie7{*margin-top:18px!important;_margin-top:0px!important;}
+.mar_top_8{margin-top:10px!important;padding-bottom:10px;}
+.mar_top20{margin-top:20px!important;}
+.mar_ri0{margin-right:0!important;}
+.mar_ri4{margin-right:4px!important;}
+.mar_ri6{margin-right:6px!important;}
+.mar_ri44{margin-right:38px!important;}
+.mar_ri300{margin-right:300px!important;}
+.mar_bot0{margin-bottom:0px!important;}
+.mar_bot4{margin-bottom:-4px!important;}
+.mar_le0{margin-left:0!important;}
+.mar_le6{margin-left:6px!important;}
+.mar_le14{margin-left:14px!important;}
+.wei_120{width:120px!important;}
+.wei_140{width:140px!important;}
+.wei_724{width:724px!important;}
+.wei_531{width:531px!important;}
+.hei_200{height:180px!important;}
+.hei_260{height:260px!important;}
+.blue,.blue:hover{color:#47a8fe;}
+.hui{color:#868585!important;}
+.qianhui{color:#bebdbd!important;}
+.bold{font-weight:bold!important;}
+
+/* home Layout */
+.container{width:100%;margin:0 auto;text-align:center;}
+
+.top_layout{width:100%;}
+.top{width:960px;height:48px;margin:0 auto;text-align:center;}
+.logo{width:119px;height:23px;float:left;margin:12px 0 0 0;}
+.top_menu{float:right;margin:19px 0 0 0;}
+.top_menu li{float:left;color:#fff;}
+.top_menu li a{float:left;padding:0 16px;color:#fff;}
+.top_menu li a:hover{color:#fff;}
+
+.banner{width:100%;height:752px;float:left;background:#feaf05 url("../images/banner.jpg") 50% 0 no-repeat;margin-bottom:55px;}
+
+.banner_liucheng{width:949px;height:108px;margin-top:605px;}
+
+.home_layout1{width:960px;margin:55px auto 20px auto;*margin:5px auto 70px auto;_margin:5px auto 20px auto;text-align:center;}
+.home_layout2{width:960px;margin:0 auto 0 auto;text-align:center;}
+.home_layout3{width:960px;margin:20px auto 50px auto;text-align:center;}
+
+.home_layout1_left{width:615px;float:left;text-align:left;}
+.home_layout1_left dt{width:615px;float:left;font-size:36px;line-height:36px;color:#fff;font-family:"Microsoft YaHei";margin-bottom:35px;}
+.home_layout1_left dd{width:615px;float:left;font-size:14px;line-height:36px;color:#fff;font-family:"Microsoft YaHei";margin-bottom:39px;}
+
+.home_layout1_right{width:314px;float:right;text-align:left; position:relative;}
+.home_layout1_right dt{width:314px;float:left;height:92px;}
+.home_layout1_right dd{width:314px;height:246px;float:left;font-size:14px;color:#fff;font-family:"Microsoft YaHei";margin-bottom:39px;background:url("../images/home_lanmu1_bg.gif") 100% 100% no-repeat;}
+.home_layout1_right dd div#roll{height:250px; width:314px; overflow:hidden; position:absolute; top:85px; left:0;}
+.home_layout1_right dd div#roll p{width:249px;height:14px;line-height:14px;margin:17px 0 0 34px;-margin:17px 0 0 17px;}
+.home_layout1_right dd div#roll p strong{float:left;}
+.home_layout1_right dd div#roll p a{float:left;color:#fff;}
+.home_layout1_right dd div#roll p span{float:right;color:#fff;}
+
+.footer{width:100%;height:47px;float:left;border-top:1px solid #404041;margin-top:31px;line-height:47px;}
+.footer_layout{width:1004px;margin:0 auto;text-align:center;}
+.footer_layout span{color:#fff;}
+.footer_layout p{float:left;text-align:right;color:#fff;}
+.footer_layout p a{color:#fff;}
+.footer_layout p a{padding:0 8px;color:#fff;}
+
+
+.login{border:5px solid #666666;background:#fff;float:left;width:460px;height:360px;position:fixed;_position:absolute;top:30%;left:32%;z-index:300;}
+.login dt{font-weight:bold;text-align:left;font-size:12px;width:460px;background:#edeced;height:64px;float:left;font-family:"Microsoft YaHei";font-size:24px;margin-bottom:20px;}
+.login dt strong{padding:13px 0 0 20px;float:left;}
+.login dt a{margin:20px 20px 0 0;float:right;}
+.login dd{width:323px;*width:357px;_width:345px;float:left;margin:20px 0 0 70px;*margin:20px 0 0 35px;_margin:20px 0 0 22px;text-align:left;color:#666666;}
+.login dd span{width:40px;float:left;height:60px;}
+
+.huibeijing{width:100%;height:100%;background:#000;filter: Alpha(Opacity=60);-moz-opacity:0.6;opacity:0.6;position:fixed;_position:absolute;z-index:200;left:0;top:0;float:left;}
+
+.zhuce_text{width:323px;height:36px;line-height:36px;float:left;border:0;background:url("../images/zhuce_text.gif") 0 0 no-repeat;padding-left:16px;color:#5d595e;}
+.zhuce_text1{width:180px;*width:164px;_width:164px;height:36px;line-height:36px;float:left;border:0;background:#000 url("../images/zhuce_text1.gif") 0 0 no-repeat;padding-left:16px;color:#5d595e;}
+.zhuce_botton2{width:323px;height:43px;line-height:41px;float:right;border:0;background:url("../images/zhuce_botton2.gif") 0 0 no-repeat;color:#fff;font-family:"Microsoft YaHei";font-size:18px;cursor:pointer;}
+
+.tishi1{font-size:18px;font-family:"Microsoft YaHei";color:#F00!important;text-align:center!important;}
+
+.home_layout3_zhuanpan{text-align:left; width:960px;height:537px;background:url("../images/choujiang.jpg") 0 0 no-repeat;}
+.home_layout3_zhuanpan_right{text-align:left;width:524px;height:531px;float:right;position:relative;}
+.home_layout3_zhuanpan_di{text-align:left;width:524px;height:531px;float:right;background:url("../images/zhuanpan.png") 0 0 no-repeat;margin:5px 3px 0 0;position:absolute;left:0;top:0;z-index:0;}
+.home_layout3_zhuanpan_zhizhen{text-align:left;width:174px;height:434px;float:left;top:46px;left:183px;position:absolute;z-index:10;}
+.home_layout3_zhuanpan_zhizhen img{text-align:left; cursor:pointer;}

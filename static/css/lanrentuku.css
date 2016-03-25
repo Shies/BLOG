@@ -1,0 +1,58 @@
+
+#imgPlay {
+	MARGIN: 0 auto; OVERFLOW: hidden; WIDTH: 1004px; ZOOM: 1; POSITION: relative; HEIGHT: 378px;float:left;
+}
+#imgPlay .imgs IMG {
+	   WIDTH: 1004px;height:378px; float:left;
+}
+#imgPlay .imgs LI {
+	FLOAT: left; POSITION: relative
+}
+#imgPlay .imgs {
+	WIDTH: 6024px
+}
+#imgPlay .btn {
+	RIGHT: 12px; OVERFLOW: hidden; WIDTH: 112px;  TEXT-INDENT: -9999px; POSITION: absolute; HEIGHT: 29px;
+}
+#imgPlay .btn A {
+	BACKGROUND: url(../images/bg.png) no-repeat;BACKGROUND-POSITION: 0px 0px; DISPLAY: block; WIDTH: 112px; HEIGHT: 29px;
+}
+#imgPlay .btn A:hover {
+	BACKGROUND: url(../images/bg.png) no-repeat;BACKGROUND-POSITION: 0px -30px;
+}
+#imgPlay .prev {
+	BACKGROUND: url(../images/imgPlayer.png) no-repeat 0px 0px; LEFT: 0px; WIDTH: 46px; CURSOR: pointer; TEXT-INDENT: -9999px; POSITION: absolute; TOP: 110px; HEIGHT: 81px
+}
+#imgPlay .next {
+	BACKGROUND: url(../images/imgPlayer.png) no-repeat 0px 0px; right: 0px; WIDTH: 46px; CURSOR: pointer; TEXT-INDENT: -9999px; POSITION: absolute; TOP: 110px; HEIGHT: 81px
+}
+#imgPlay .next {
+	BACKGROUND-POSITION: right 0px; RIGHT: 1px; LEFT: auto
+}
+#imgPlay .num {
+	DISPLAY: inline; LEFT: 400px; POSITION: absolute; TOP: 295px; HEIGHT: 19px
+}
+#imgPlay .num SPAN {
+	DISPLAY: inline-block; BACKGROUND: url(../images/imgPlayer.png) no-repeat -19px -83px; MARGIN: 0px 2px; OVERFLOW: hidden; WIDTH: 14px; CURSOR: pointer; LINE-HEIGHT: 0; HEIGHT: 13px
+}
+#imgPlay .num SPAN.on {
+	BACKGROUND-POSITION: 1px -83px
+}
+#imgPlay .num .lc {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/lc.png) no-repeat; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 13px; PADDING-TOP: 3px; HEIGHT: 16px
+}
+#imgPlay .num .mc {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/lc.png) no-repeat; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 13px; PADDING-TOP: 3px; HEIGHT: 16px
+}
+#imgPlay .num .rc {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/lc.png) no-repeat; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 13px; PADDING-TOP: 3px; HEIGHT: 16px
+}
+#imgPlay .num .mc {
+	BACKGROUND: url(../images/mc.png) repeat-x
+}
+#imgPlay .num .rc {
+	BACKGROUND: url(../images/rc.png) no-repeat
+}
+#imgPlay #numInner {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 0px; POSITION: absolute; TOP: 335px; TEXT-ALIGN: center
+}

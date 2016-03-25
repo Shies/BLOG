@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绿豆网|来绿豆一起拼车，拼玩，拼房，拼购</title>
+<link href="__ROOT__/static/css/xtyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/static/js/jquery-1.6.2.min.js"></script>
+<link href='__ROOT__/plugin/set_avatar/jquery.fileupload-ui.css' rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/plugin/set_avatar/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="__ROOT__/plugin/set_avatar/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="__ROOT__/plugin/set_avatar/jquery.fileupload.js"></script>
+<link rel="stylesheet" href="__ROOT__/plugin/set_avatar/common.css" type="text/css" />
+<link rel="stylesheet" href="__ROOT__/plugin/set_avatar/jquery.Jcrop.css" type="text/css" />
+<script type='text/javascript' src='__ROOT__/plugin/set_avatar/jquery.Jcrop.js'></script>
+</head>
+<body class="bg">
+<include file='Public:header' />
+<div id="body" class="ah">
+	<div class="w9">
+<div class="boxuser1 ah">
+<include file='Public:memu' />
+<script>
+	$(".side-nav li").eq(7).addClass('current J_GoToLogin');
+</script>
+	<div class="userzxright">
+		<div class="title">个人基本资料
+			<span class='tab3'>
+				<a style="color:white; background:green; border:solid green 1px;" href="{:U('Spacecp/set_avatar')}">设置头像</a>
+				<a href="{:U('Spacecp/profile')}">用户档案</a>
+			</span>
+		</div>
+		<div style='height:170px; float:left;'>
+			<p style='float:right; margin-left:15px; text-align:center;'><img src="__ROOT__{$userinfo['user_head']}" /><br /> 150 x 150</p>
+			<p style='float:right; margin-left:15px; text-align:center;'><img src="__ROOT__{$userinfo['user_head2']}" /><br /> 100 x 100</p>
+			<p style='float:right; margin-left:5px; text-align:center;'><img src="__ROOT__{$userinfo['user_head1']}" /><br /> 50 x 50</p>
+		</div>
+		<div class='container' style='clear:both;'>
+			<!-- The fileinput-button span is used to style the file input field as button -->
+			<span class="btn btn-success fileinput-button" style='float:left; background:url("__ROOT__/plugin/set_avatar/img/selectfile.jpg") no-repeat; width:117px; height:30px'>
+				<i class="icon-plus icon-white"></i>
+				<span></span>
+				<!-- The file input field used as target for the file upload widget -->
+				<input id="fileupload" type="file" name="files[]" multiple>
+			</span>	
+			<!-- The global progress bar -->
+			<span style='float:left; padding-left:10px; margin-top:5px'>
+				<div id="progress" style='width:550px;' class="progress progress-success progress-striped">
+					<div class="bar"></div>
+				</div>
+			</span>
+			<!-- The container for the uploaded files -->
+			<div id="files" class="files" style='clear:both; padding:10px 0; font-size:12px; font-weight:bold; color:#666;'>(支持：jpg、png、gif、jpeg), 图片大小不超过1MB</div>
+		</div>
+		<div class="zxx_main_con" style='padding:0; display:none;'>
+			<div class="zxx_test_list" style='position:relative;'>
+				<div class="rel mb20" id='uploading' style='float:left;'>
+					<img id="xuwanting" src="#" />
+				</div>
+				<div style='float:left; padding-left:10px;'>
+					<div id='preview_box2' style="margin:5px 0 15px 0; width:150px;height:150px;overflow:hidden;"><img id="crop_preview2" src="#" /></div>
+					<div id='preview_box1' style='margin:0 0 15px 0; width:100px;height:100px;overflow:hidden;'><img id="crop_preview1" src="#" /></div>
+					<div id="preview_box" style='width:50px;height:50px;overflow:hidden;'><img id="crop_preview" src="#" /></div>
+				</div>
+				<div style='clear:both;'>
+					<form action='__URL__/set_avatar' method='post' id='crop_form'>
+							<input type="hidden" id="x" name="x" />
+							<input type="hidden" id="y" name="y" />
+							<input type="hidden" id="w" name="w" />
+							<input type="hidden" id="h" name="h" />
+							<input type='hidden' id='g' name='g' />
+							<input type="button" class='bt1' value="确认剪裁并保存" id="crop_submit" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	</div>
+	</div>
+</div>
+<include file='Public:footer' />
+</body>
+</html>
+<script language='javascript'>
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+    if (arr != null) return unescape(arr[2]); return null;
+}
+
+var jcrop_api, boundx, boundy;
+$(window).load(function() {
+	$('#fileupload').fileupload({
+		url: "{:U('Spacecp/avatar_upload')}",
+		dataType: 'json',
+		formData : {
+			csrf_test_name : getCookie('csrf_cookie_name')
+		},
+		cache : false,
+		acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+        maxFileSize: 1000000, // 1 MB
+		done: reponse,
+		progressall: function (e, data) {
+			var progress = parseInt(data.loaded / data.total * 100, 10);
+			if (progress == 100) {
+				$('#progress .bar').css({
+					'width' : 430,
+					'height' : 20,
+					'text-align' : 'center',
+					'background' : "url('__ROOT__/plugin/set_avatar/img/progressbar.gif') repeat scroll 0 0 transparent"
+				}
+				).html('载入完成！');
+			} else {
+				$('#progress .bar').css({
+					'width' : 430,
+					'height' : 20,
+					'text-align' : 'center',
+					'background' : "url('__ROOT__/plugin/set_avatar/img/progressbar.gif') repeat scroll 0 0 transparent"
+				}
+				).html('上传中 ...');
+			}
+		}
+	});
+});
+
+function reponse(e, data) {
+	$('#uploading').empty().append("<img id='xuwanting' />");
+	$('#xuwanting').attr('src', data.result.files[0].thumbnail_url);
+	$('#crop_preview').attr('src', data.result.files[0].thumbnail_url);
+	$('#crop_preview1').attr('src', data.result.files[0].thumbnail_url);
+	$('#crop_preview2').attr('src', data.result.files[0].thumbnail_url);
+	$('#g').val('./data/upload/temp_avatar/thumbnail/' + data.result.files[0].name);
+	$('.zxx_main_con').show();
+	
+	$("#xuwanting").Jcrop({
+		boxWidth:450,
+		boxHeight:450,
+		aspectRatio:1,
+		onChange:showCoords,
+		onSelect:showCoords,
+		minSize:[50, 50]
+	}, function() {
+		var bounds = this.getBounds();
+		boundx = bounds[0];
+		boundy = bounds[1];
+		jcrop_api = this;
+	});
+	
+	$("#crop_submit").click(function(){
+		$("#crop_form").submit();
+	});
+	
+	return false;
+}
+
+function showCoords(obj) {
+	$("#x").val(obj.x);
+	$("#y").val(obj.y);
+	$("#w").val(obj.w);
+	$("#h").val(obj.h);
+	// 通过比例值控制图片的样式与显示
+	if (parseInt(obj.w) > 0) {
+		var rx = $("#preview_box").width() / obj.w; 
+		var ry = $("#preview_box").height() / obj.h;
+		$("#crop_preview").css({
+			width:Math.round(rx * $("#xuwanting").width()) + "px",
+			height:Math.round(rx * $("#xuwanting").height()) + "px",
+			marginLeft:"-" + Math.round(rx * obj.x) + "px",
+			marginTop:"-" + Math.round(ry * obj.y) + "px"
+		});
+		
+		var rx1 = $("#preview_box1").width() / obj.w; 
+		var ry1 = $("#preview_box1").height() / obj.h;
+		$("#crop_preview1").css({
+			width:Math.round(rx1 * $("#xuwanting").width()) + "px",
+			height:Math.round(rx1 * $("#xuwanting").height()) + "px",
+			marginLeft:"-" + Math.round(rx1 * obj.x) + "px",
+			marginTop:"-" + Math.round(ry1 * obj.y) + "px"
+		});
+		
+		var rx2 = $("#preview_box2").width() / obj.w; 
+		var ry2 = $("#preview_box2").height() / obj.h;
+		$("#crop_preview2").css({
+			width:Math.round(rx2 * $("#xuwanting").width()) + "px",
+			height:Math.round(rx2 * $("#xuwanting").height()) + "px",
+			marginLeft:"-" + Math.round(rx2 * obj.x) + "px",
+			marginTop:"-" + Math.round(ry2 * obj.y) + "px"
+		});
+	}
+}
+</script>

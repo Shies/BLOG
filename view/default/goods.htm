@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>商品列表</title>
+<meta name="keywords" content="商品列表">
+<meta name="description" content="商品列表" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="container">
+<!-- {if $smarty.get.act == 'detail'} -->
+	<div class='goodsinfo'>
+		<ul>
+			<!-- {if $goods eq ''} -->
+				<li>暂无商品详情显示 ...</li>
+			<!-- {else} -->
+				<li>商品名称：{$goods.goods_name}</a></li>
+				<li>商品货号：{$goods.goods_sn}</li>
+				<li>商品价格：{$goods.shop_price}</li>
+				<li>商品库存：{$goods.goods_number}</li>
+				<li>商品详情：{$goods.goods_desc}</li>
+			<!-- {/if} -->
+		</ul>
+	</div>
+<!-- {else} -->
+	<div class='goodslist'>
+		<ul>
+			<!-- {if $goods eq ''} -->
+				<li>暂无商品信息显示 ...</li>
+			<!-- {else} -->
+				<!-- {foreach from=$goods item=item} -->
+					<li><a href='index.php?app=goods&act=detail&id={$item.goods_id}' target='_blank'>{$item.goods_name}</a></li>
+				<!-- {/foreach} -->
+			<!-- {/if} -->
+		</ul>
+	</div>
+	<div id='pager'><!-- {if $pager eq ''} --><!-- {else} -->{$pager.pager}<!-- {/if} --></div>
+<!-- {/if} -->
+</div>
+</body>
+</html>

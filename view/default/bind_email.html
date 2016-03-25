@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绿豆网|来绿豆一起拼车，拼玩，拼房，拼购</title>
+<link href="__ROOT__/static/css/xtyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/static/js/jquery-1.6.2.min.js"></script>
+</head>
+<body class="bg">
+<include file='Public:header' />
+<div id="body" class="ah">
+	<div class="w9">
+<div class="boxuser1 ah">
+<include file='Public:memu' />
+<script>
+	$(".side-nav li").eq(8).addClass('current J_GoToLogin');
+</script>
+	<div class="userzxright">
+		<div class="title">账号绑定管理
+			<span class='tab3'>
+				<a style="color:white; background:green; border:solid green 1px;" href="{:U('Spacecp/bind_email')}">邮箱绑定</a>
+				<a href="javascript:;">手机绑定 (接口暂无)</a>
+			</span>
+		</div>
+		<if condition="$userinfo['email'] eq '' AND $userinfo['is_email_validated'] eq 0 AND $_GET['_URL_'][2] eq ''">
+			<form action="{:U('Spacecp/bind_email')}" method='post' class='fms' name='myform'>
+				<p><span>绑定邮箱:</span> <input type='text' name='email' id='email' class="ipt9" /> <input type='submit' name='submit' value='提交' class="bt1" /></p>
+			</form>
+		<elseif condition="$userinfo['email'] neq '' AND $userinfo['is_email_validated'] eq 1 AND $_GET['_URL_'][2] eq ''" />
+			<p><span>你的绑定邮箱账号为：</span>{$userinfo['email']} <a href="{:U('Spacecp/bind_email', edit.'=0')}" class="bt3">修改</a></p>
+		<else />
+			<form action="{:U('Spacecp/bind_email')}" method='post' onSubmit="return checkEmail(this, 'email')" class='fms' name='myform'>
+				<p><span>绑定邮箱:</span> <input type='text' name='email' id='email' class="ipt9" /> <input type='submit' name='submit' value='提交' class="bt1" /></p>
+			</form>
+		</if>
+	</div>
+
+	</div>
+	</div>
+	</div>
+</div>
+<include file='Public:footer' />
+</body>
+</html>
+<script language='javascript'>
+// this's myself checkEmail write's code, cool ?
+function checkEmail(frm, email) {
+	return ! (/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/
+			.test(frm.elements[email].value)) ? 
+		   !! alert('你输入的邮箱格式有误') : true == 1;
+}
+</script>

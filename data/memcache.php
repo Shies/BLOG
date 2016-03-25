@@ -1,0 +1,5 @@
+<?PHP
+$memcache = array(
+	
+
+);
