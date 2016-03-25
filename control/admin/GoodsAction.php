@@ -44,53 +44,5 @@ class GoodsAction extends Controller {
 		$this->view->display('goods.htm');
 	}
 	
-	function add() {
-		$method = strtoupper($_SERVER['REQUEST_METHOD']);
-		if ($method === 'POST') {
-			$goodsname = trim(getgpc('goodsname', 'P'));
-			
-			$number = intval(getgpc('goodsnumber', 'P'));
-			$goodssn = trim(getgpc('goodssn', 'P'));
-			$shopprice = floatval(getgpc('shopprice', 'P'));
-			
-			$goodsdesc = htmlspecialchars(trim(getgpc('goosdspec', 'P')));
-			
-			if (empty($goodsname)) {
-				$this->show_msg('Your goods name not can empty');
-			} elseif (strlen($goodsname) > 255) {
-				$this->show_msg('Your goods name length so max');
-			}
-			
-			if (max($number, 0) == 0) {
-				$this->show_msg('Your goods number for 0');
-			}
-			
-			if (empty($goodssn)) {
-				$this->show_msg('Your goods sn must sole');
-			} elseif (!$_ENV['goods']->get_goods_sn($goodssn)) {
-				$this->show_msg('Your goods sn can exsits');
-			}
-			
-			if (strcmp($shopprice, 0) == 0) {
-				$this->show_msg('Your goods name not can empty');
-			}
-			
-			$goods = array(
-				'goods_name' => $goods_name,
-				'goods_sn'   => $goods_sn,
-				'shop_price' => $shop_price,
-				'goods_number' => $goods_number,
-				'goods_desc' => $goods_desc
-			);
-			  
-			
-			
-		} else {
-			
-		}
-	}
-	
-	
-	
 }
 ?>

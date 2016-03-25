@@ -1,6 +1,6 @@
 <?PHP
 
 # Location to admin #
-header("Location: index.php?adm=1");
+header("Location: index.php/admin/goods/lists");
 
 ?>
