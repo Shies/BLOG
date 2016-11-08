@@ -58,7 +58,7 @@ class Base {
 		$control = Base::load_class(ucfirst($className).'Action', 'control/'.$directory);
 		if (method_exists($control, $methodName)) {
 			if ($methodName{0} != '_') {
-				call_user_func(array($control, $methodName));
+				call_user_func_array(array($control, $methodName), $params);
 				exit;
 			}
 		}
