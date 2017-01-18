@@ -138,16 +138,16 @@ function applyarr(&$arr, $func = '', $applykey = false) {
 		} else {
 			$arr[$key] = $func($val);
 		}
-	}
-	
-	if (false !== $applykey && is_string($key)) {
-		$_key = $func($key);
-		if ($_key != $key) {
-			$arr[$_key] = $arr[$key];
-			unset($arr[$key]);
+
+		if (false !== $applykey && is_string($key)) {
+			$_key = $func($key);
+			if ($_key != $key) {
+				$arr[$_key] = $arr[$key];
+				unset($arr[$key]);
+			}
 		}
+		$recursive_counter --;
 	}
-	$recursive_counter --;
 }
 
 function str_exists($str, $find) {
